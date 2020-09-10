@@ -51,9 +51,11 @@ dependencies {
 //    //retrofit2
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+    implementation "com.squareup.okhttp3:okhttp:3.14.9"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.14.9"
 
 //    //stetho to inspect network status
-//    implementation 'com.facebook.stetho:stetho:1.5.1'
-//    implementation "com.facebook.stetho:stetho-okhttp3:1.5.1"
+    implementation 'com.facebook.stetho:stetho:1.5.1'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
 
 }

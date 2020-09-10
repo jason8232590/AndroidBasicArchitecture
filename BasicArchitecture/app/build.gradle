@@ -45,4 +45,15 @@ dependencies {
     implementation 'com.google.dagger:dagger-android-support:2.28.1' // if you use the support libraries
     kapt 'com.google.dagger:dagger-android-processor:2.28.1'
 
+    //livedata
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+
+//    //retrofit2
+    implementation "com.squareup.retrofit2:retrofit:2.9.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
+
+//    //stetho to inspect network status
+//    implementation 'com.facebook.stetho:stetho:1.5.1'
+//    implementation "com.facebook.stetho:stetho-okhttp3:1.5.1"
+
 }

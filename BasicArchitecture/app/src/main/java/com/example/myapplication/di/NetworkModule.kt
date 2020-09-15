@@ -15,14 +15,14 @@ import javax.inject.Singleton
 
 @Module
 class NetworkModule {
-
+    @Singleton
     @Provides
     fun ProvideDaXiongService(
         @PrivateAPI okhttpClient: OkHttpClient,
         converterFactory: GsonConverterFactory
     ) = createRetrofit(okhttpClient, converterFactory).create(DaXiongService::class.java)
 
-
+    @Singleton
     @Provides
     fun createRetrofit(
         okhttpClient: OkHttpClient,
@@ -34,7 +34,7 @@ class NetworkModule {
             .addConverterFactory(converterFactory)
             .build()
     }
-
+    @Singleton
     @Provides
     fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient =
         OkHttpClient.Builder().addInterceptor(interceptor)
@@ -43,6 +43,7 @@ class NetworkModule {
 
     @PrivateAPI
     @Provides
+    @Singleton
     fun providePrivateOkHttpClient(
         upstreamClient: OkHttpClient
     ): OkHttpClient {
@@ -50,6 +51,7 @@ class NetworkModule {
             .addInterceptor(AuthInterceptor(BuildConfig.API_DEVELOPER_TOKEN)).build()
     }
     @Provides
+    @Singleton
     fun provideLoggingInterceptor() =
         HttpLoggingInterceptor().apply {
             level =

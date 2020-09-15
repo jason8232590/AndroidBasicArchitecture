@@ -1,6 +1,7 @@
 package com.example.myapplication.di
 
 import com.example.myapplication.BuildConfig
+import com.example.myapplication.network.AuthInterceptor
 import com.example.myapplication.network.DaXiongService
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
@@ -17,7 +18,7 @@ class NetworkModule {
 
     @Provides
     fun ProvideDaXiongService(
-        okhttpClient: OkHttpClient,
+        @PrivateAPI okhttpClient: OkHttpClient,
         converterFactory: GsonConverterFactory
     ) = createRetrofit(okhttpClient, converterFactory).create(DaXiongService::class.java)
 
@@ -40,6 +41,14 @@ class NetworkModule {
             .addNetworkInterceptor(StethoInterceptor())
             .build()
 
+    @PrivateAPI
+    @Provides
+    fun providePrivateOkHttpClient(
+        upstreamClient: OkHttpClient
+    ): OkHttpClient {
+        return upstreamClient.newBuilder()
+            .addInterceptor(AuthInterceptor(BuildConfig.API_DEVELOPER_TOKEN)).build()
+    }
     @Provides
     fun provideLoggingInterceptor() =
         HttpLoggingInterceptor().apply {

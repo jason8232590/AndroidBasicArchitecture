@@ -15,10 +15,16 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', 'API_DEVELOPER_TOKEN', "\"${api_developer_token}\""
     }
 
     buildFeatures {
         dataBinding true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     buildTypes {
@@ -39,11 +45,12 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
-    implementation 'com.google.dagger:dagger:2.28.1'
-    kapt 'com.google.dagger:dagger-compiler:2.28.1'
-    implementation 'com.google.dagger:dagger-android:2.28.1'
-    implementation 'com.google.dagger:dagger-android-support:2.28.1' // if you use the support libraries
-    kapt 'com.google.dagger:dagger-android-processor:2.28.1'
+    // Dagger
+    kapt "com.google.dagger:dagger-compiler:2.28.1"
+    kapt "com.google.dagger:dagger-android-processor:2.28.1"
+    implementation "com.google.dagger:dagger:2.28.1"
+    implementation "com.google.dagger:dagger-android:2.28.1"
+    implementation "com.google.dagger:dagger-android-support:2.28.1"
 
     //livedata
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"

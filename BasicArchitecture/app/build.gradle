@@ -66,6 +66,8 @@ dependencies {
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
 
     //viewmodel
+    //livedata
+    //lifecycle library
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
 
 }

@@ -32,7 +32,34 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        dev{
+            applicationIdSuffix ".dev"
+            versionNameSuffix "-dev"
+        }
+        prod{
+            applicationIdSuffix ".prod"
+            versionNameSuffix "-prod"
+        }
+        qa{
+            applicationIdSuffix ".qa"
+            versionNameSuffix "-qa"
+        }
     }
+
+    flavorDimensions("Car")
+
+    productFlavors{
+        BMW{
+            dimension "Car"
+        }
+
+        QQ{
+            dimension "Car"
+        }
+
+    }
+
+
 }
 
 dependencies {
@@ -46,28 +73,26 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // Dagger
-    kapt "com.google.dagger:dagger-compiler:2.28.1"
-    kapt "com.google.dagger:dagger-android-processor:2.28.1"
-    implementation "com.google.dagger:dagger:2.28.1"
-    implementation "com.google.dagger:dagger-android:2.28.1"
-    implementation "com.google.dagger:dagger-android-support:2.28.1"
-
-    //livedata
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
+    kapt "com.google.dagger:dagger-compiler:$daggerVersion"
+    kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    implementation "com.google.dagger:dagger-android:$daggerVersion"
+    implementation "com.google.dagger:dagger-android-support:$daggerVersion"
 
 //    //retrofit2
-    implementation "com.squareup.retrofit2:retrofit:2.9.0"
-    implementation "com.squareup.retrofit2:converter-gson:2.9.0"
-    implementation "com.squareup.okhttp3:okhttp:3.14.9"
-    implementation "com.squareup.okhttp3:logging-interceptor:3.14.9"
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    implementation "com.squareup.okhttp3:okhttp:$okhttpVersion"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttpVersion"
 
 //    //stetho to inspect network status
-    implementation 'com.facebook.stetho:stetho:1.5.1'
-    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
+    implementation "com.facebook.stetho:stetho:$stethoVersion"
+    implementation "com.facebook.stetho:stetho-okhttp3:$stethoVersion"
 
     //viewmodel
     //livedata
     //lifecycle library
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
 
 }

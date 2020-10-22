@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyBasicArchitecture</string>
+    <string name="score_format">Current Score: %d</string>
 </resources>

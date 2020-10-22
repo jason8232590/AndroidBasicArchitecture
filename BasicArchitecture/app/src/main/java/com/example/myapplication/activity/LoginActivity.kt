@@ -17,6 +17,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+
         //如果有参数的viewmodel,ViewProvider不支持直接初始化这种类型的viewmodel
         //只能通过viewmodelfactory的方式
         viewModelFactory = LoginActivityViewModelFactory(2);

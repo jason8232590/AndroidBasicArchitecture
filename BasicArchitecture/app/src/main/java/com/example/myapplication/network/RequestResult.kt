@@ -1,7 +1,7 @@
 package com.example.myapplication.network
 
 import com.google.gson.annotations.SerializedName
-data class RequestResponse<T> (
+data class RequestResult<T> (
     @SerializedName("count")
     val count: Int,
     @SerializedName("next")

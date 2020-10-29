@@ -3,6 +3,7 @@ package com.example.myapplication.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.myapplication.base.BaseViewModel
 import com.example.myapplication.network.BaseObserver
 import com.example.myapplication.network.DaXiongService
 import com.example.myapplication.network.NetScheduler
@@ -15,7 +16,7 @@ import io.reactivex.rxjava3.disposables.Disposable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-class HomeViewModel @Inject constructor(var daXiongService: DaXiongService) : ViewModel() {
+class HomeViewModel @Inject constructor(var daXiongService: DaXiongService) : BaseViewModel() {
 
     private val _dataLoading = MutableLiveData<Boolean>()
     val dataLoading: LiveData<Boolean> = _dataLoading
@@ -50,6 +51,7 @@ class HomeViewModel @Inject constructor(var daXiongService: DaXiongService) : Vi
     }
 
     fun getThemes(){
+        loadingStart()
         daXiongService.getLegoThemes(1, 1000, "-id")
             .compose(NetScheduler.compose())
             .subscribe(object: BaseObserver<LegoTheme>(){
@@ -59,6 +61,7 @@ class HomeViewModel @Inject constructor(var daXiongService: DaXiongService) : Vi
 
                 override fun onSuccess(data: RequestResult<LegoTheme>) {
                     println("xcqw  getLegoThemes onSuccess")
+                    loadingFinish()
                 }
 
             })

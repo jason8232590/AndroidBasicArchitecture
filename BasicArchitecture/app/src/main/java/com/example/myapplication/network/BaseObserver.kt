@@ -20,6 +20,8 @@ abstract class BaseObserver<T> : Observer<RequestResult<T>> {
 //        }
         if(value.results != null ){
             onSuccess(value)
+        }else{
+            onFailure(value,"fail")
         }
     }
 
@@ -31,6 +33,7 @@ abstract class BaseObserver<T> : Observer<RequestResult<T>> {
     }
 
     abstract fun onFailure(t: RequestResult<T>?, message: String?)
+
 
     abstract fun onSuccess(data: RequestResult<T>)
 }

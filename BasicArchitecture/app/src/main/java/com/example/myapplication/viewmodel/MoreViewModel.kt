@@ -20,4 +20,5 @@ class MoreViewModel  @Inject constructor(var daXiongService: DaXiongService) : V
     init {
         _age.value = 10
     }
+
 }

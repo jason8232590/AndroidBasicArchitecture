@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -11,16 +12,72 @@
             type="com.example.myapplication.viewmodel.MoreViewModel" />
     </data>
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".fragment.MoreFragment">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="Hello" />
+       <Button
+           android:id="@+id/bt_startService"
+           android:layout_width="0dp"
+           android:layout_height="wrap_content"
+           app:layout_constraintLeft_toLeftOf="parent"
+           app:layout_constraintTop_toTopOf="parent"
+           app:layout_constraintRight_toLeftOf="@+id/bt_stopService"
+           app:layout_constraintHorizontal_weight="1"
+           android:text="@string/startservice"/>
 
-    </FrameLayout>
+        <Button
+            android:id="@+id/bt_stopService"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toRightOf="@+id/bt_startService"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/stopservice"/>
+
+        <Button
+            android:id="@+id/bt_bindService"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintRight_toLeftOf="@+id/bt_unbindService"
+            app:layout_constraintTop_toBottomOf="@id/bt_startService"
+            android:text="@string/bindservice"/>
+
+        <Button
+            android:id="@+id/bt_unbindService"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@+id/bt_bindService"
+            app:layout_constraintTop_toBottomOf="@id/bt_stopService"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="@string/unbindservice"/>
+
+
+        <Button
+            android:id="@+id/bt_startBindService"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintTop_toBottomOf="@+id/bt_bindService"
+            app:layout_constraintRight_toLeftOf="@+id/bt_stopunbindService"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="@string/startandbindservice"/>
+
+        <Button
+            android:id="@+id/bt_stopunbindService"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintLeft_toRightOf="@id/bt_startBindService"
+            app:layout_constraintTop_toBottomOf="@+id/bt_unbindService"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="@string/stopandunbindservice"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -48,4 +48,9 @@ class MainActivity : BaseActivity() {
     }
 
 
+    override fun onDestroy() {
+        super.onDestroy()
+        println("xcqw activity onDestory")
+    }
+
 }

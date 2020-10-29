@@ -36,6 +36,11 @@ class HomeFragment : DaggerFragment() {
         return viewDataBinding.root
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.getThemes()
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewDataBinding.viewModel = viewModel

@@ -8,6 +8,7 @@ import com.example.myapplication.network.DaXiongService
 import com.example.myapplication.network.NetScheduler
 import com.example.myapplication.network.RequestResult
 import com.example.myapplication.network.entity.LegoSet
+import com.example.myapplication.network.entity.LegoTheme
 import io.reactivex.rxjava3.core.Observer
 import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.disposables.Disposable
@@ -29,7 +30,7 @@ class HomeViewModel @Inject constructor(var daXiongService: DaXiongService) : Vi
         _age.value = 10
     }
 
-    fun GetThemes() {
+    fun GetSet() {
 
         daXiongService.getSet("1")
             .compose(NetScheduler.compose())
@@ -46,5 +47,20 @@ class HomeViewModel @Inject constructor(var daXiongService: DaXiongService) : Vi
             })
 
 
+    }
+
+    fun getThemes(){
+        daXiongService.getLegoThemes(1, 1000, "-id")
+            .compose(NetScheduler.compose())
+            .subscribe(object: BaseObserver<LegoTheme>(){
+                override fun onFailure(t: RequestResult<LegoTheme>?, message: String?) {
+                    println("xcqw getLegoThemes onFailure")
+                }
+
+                override fun onSuccess(data: RequestResult<LegoTheme>) {
+                    println("xcqw  getLegoThemes onSuccess")
+                }
+
+            })
     }
 }

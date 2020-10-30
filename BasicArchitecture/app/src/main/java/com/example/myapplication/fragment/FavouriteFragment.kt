@@ -1,5 +1,6 @@
 package com.example.myapplication.fragment
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,12 +12,13 @@ import androidx.fragment.app.viewModels
 import com.example.myapplication.R
 import com.example.myapplication.databinding.FavouriteFragmentBinding
 import com.example.myapplication.databinding.HomeFragmentBinding
+import com.example.myapplication.slidemenuactivity.CustomViewActivity
 import com.example.myapplication.viewmodel.FavouriteViewModel
 import com.example.myapplication.viewmodel.HomeViewModel
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-class  FavouriteFragment : DaggerFragment() {
+class  FavouriteFragment : DaggerFragment(), View.OnClickListener {
 
     private lateinit var viewDataBinding: FavouriteFragmentBinding
 
@@ -42,5 +44,11 @@ class  FavouriteFragment : DaggerFragment() {
         super.onActivityCreated(savedInstanceState)
         viewDataBinding.viewModel = viewModel
         viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
+
+        viewDataBinding.btJump.setOnClickListener(this)
+    }
+
+    override fun onClick(v: View?) {
+        activity?.startActivity(Intent(activity,CustomViewActivity::class.java))
     }
 }

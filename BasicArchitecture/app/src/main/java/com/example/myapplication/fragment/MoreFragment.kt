@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.R
 import com.example.myapplication.Service.MyConnection
 import com.example.myapplication.Service.TestService
+import com.example.myapplication.algorithm.AlgorithmActivity
 import com.example.myapplication.databinding.MoreFragmentBinding
 import com.example.myapplication.viewmodel.MoreViewModel
 import dagger.android.support.DaggerFragment
@@ -22,6 +23,7 @@ class MoreFragment : DaggerFragment(), View.OnClickListener {
     private lateinit var viewDataBinding: MoreFragmentBinding
     private lateinit var serviceIntent: Intent
     private lateinit var myConnection: MyConnection
+
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
@@ -55,14 +57,37 @@ class MoreFragment : DaggerFragment(), View.OnClickListener {
         viewDataBinding.btStopService.setOnClickListener(this)
         viewDataBinding.btUnbindService.setOnClickListener(this)
         viewDataBinding.btStopunbindService.setOnClickListener(this)
-        serviceIntent = Intent(activity,TestService::class.java)
+        viewDataBinding.btStartActivty.setOnClickListener(this)
+        serviceIntent = Intent(activity, TestService::class.java)
         myConnection = MyConnection()
+
+
+    }
+
+
+
+    fun testFor21() {
+        var linkOne1: ListNode = ListNode(1)
+        var linkOne2: ListNode = ListNode(2)
+        var linkOne3: ListNode = ListNode(4)
+        linkOne1.next = linkOne2
+        linkOne2.next = linkOne3
+
+        var linkTwo1: ListNode = ListNode(1)
+        var linkTwo2: ListNode = ListNode(3)
+        var linkTwo3: ListNode = ListNode(5)
+        linkTwo1.next = linkTwo2
+        linkTwo2.next = linkTwo3
+
+
+        var finalListNode: ListNode = SolutionFor21Java.mergeTwoLists(linkOne1, linkTwo1)
+        println("xcqw " + finalListNode.toString())
     }
 
     override fun onClick(v: View?) {
         when (v) {
             viewDataBinding.btBindService -> {
-                activity?.bindService(serviceIntent,myConnection,Context.BIND_AUTO_CREATE )
+                activity?.bindService(serviceIntent, myConnection, Context.BIND_AUTO_CREATE)
             }
             viewDataBinding.btStartBindService -> {
                 println("xcqw btStopunbindService")
@@ -78,18 +103,19 @@ class MoreFragment : DaggerFragment(), View.OnClickListener {
                 activity?.unbindService(myConnection)
             }
             viewDataBinding.btStopunbindService -> println("xcqw btStopunbindService")
+
+            viewDataBinding.btStartActivty -> activity?.startActivity(Intent(activity,AlgorithmActivity::class.java))
         }
     }
 
-    fun callService(){
+    fun callService() {
         myConnection.myBinder.callBackMethodService(200)
     }
 
-    fun callServiceDirect(){
+    fun callServiceDirect() {
         val tService = TestService()
         tService.methodService()
     }
-
 
 
 }

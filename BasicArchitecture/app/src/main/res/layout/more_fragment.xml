@@ -78,6 +78,16 @@
             app:layout_constraintRight_toRightOf="parent"
             android:text="@string/stopandunbindservice"/>
 
+        <Button
+            android:id="@+id/bt_startActivty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="startActivity"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bt_startBindService" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

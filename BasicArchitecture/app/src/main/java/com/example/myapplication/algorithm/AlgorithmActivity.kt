@@ -3,6 +3,9 @@ package com.example.myapplication.algorithm
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.myapplication.R
+import com.example.myapplication.algorithm.linklist.ListNode
+import com.example.myapplication.algorithm.linklist.SolutionFor19
+import com.example.myapplication.algorithm.linklist.getLength
 
 class AlgorithmActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,6 +1,5 @@
 package com.example.myapplication.algorithm.linklist;
 
-import com.example.myapplication.algorithm.ListNode;
 
 public class SolutionFor21Java {
     public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {

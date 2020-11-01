@@ -12,6 +12,7 @@ class AlgorithmActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_algorithm)
         testFor19()
+
     }
 
     fun testFor19() {

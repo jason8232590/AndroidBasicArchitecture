@@ -65,25 +65,6 @@ class MoreFragment : DaggerFragment(), View.OnClickListener {
     }
 
 
-
-    fun testFor21() {
-        var linkOne1: ListNode = ListNode(1)
-        var linkOne2: ListNode = ListNode(2)
-        var linkOne3: ListNode = ListNode(4)
-        linkOne1.next = linkOne2
-        linkOne2.next = linkOne3
-
-        var linkTwo1: ListNode = ListNode(1)
-        var linkTwo2: ListNode = ListNode(3)
-        var linkTwo3: ListNode = ListNode(5)
-        linkTwo1.next = linkTwo2
-        linkTwo2.next = linkTwo3
-
-
-        var finalListNode: ListNode = SolutionFor21Java.mergeTwoLists(linkOne1, linkTwo1)
-        println("xcqw " + finalListNode.toString())
-    }
-
     override fun onClick(v: View?) {
         when (v) {
             viewDataBinding.btBindService -> {

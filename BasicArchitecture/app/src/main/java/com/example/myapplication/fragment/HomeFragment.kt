@@ -8,11 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.example.myapplication.R
 import com.example.myapplication.databinding.HomeFragmentBinding
 import com.example.myapplication.viewmodel.HomeViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
+import com.example.myapplication.network.Result
 
 class HomeFragment : DaggerFragment() {
 
@@ -40,5 +43,27 @@ class HomeFragment : DaggerFragment() {
         super.onActivityCreated(savedInstanceState)
         viewDataBinding.viewModel = viewModel
         viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
+
+       viewDataBinding.button.setOnClickListener{
+           getLegoSet()
+       }
+    }
+
+    fun getLegoSet(){
+        viewModel.id = "30625-1"
+        viewModel.legoSet.observe(viewLifecycleOwner, Observer { response->
+            when (response.status) {
+                Result.Status.SUCCESS-> {
+                   println("xcqw success")
+                }
+                Result.Status.LOADING -> {
+                    println("xcqw LOADING")
+                }
+                Result.Status.ERROR -> {
+                    println("xcqw ERROR")
+
+                }
+            }
+        })
     }
 }

@@ -14,20 +14,20 @@ interface DaXiongService {
     }
 
     @GET("lego/themes")
-    fun getLegoThemes(
+    suspend fun getLegoThemes(
         @Query("page") page: Int? = null,
         @Query("page_size") pageSize: Int? = null,
         @Query("ordering") order: Int? = null
-    ): Response<RequestResponse<LegoTheme>>
+    ): Response<ResponseResult<LegoTheme>>
 
     @GET("lego/sets/")
-    fun getStatus(
+    suspend fun getStatus(
         @Query("page") page: Int? = null,
         @Query("page_size") pageSize: Int? = null,
         @Query("theme_id") themeId: Int? = null,
         @Query("ordering") order: String? = null
-    ): RequestResponse<RequestResponse<RequestResponse<LegoSet>>>
+    ): ResponseResult<LegoSet>
 
-    @GET("lego/sets{id}/")
-    fun getSet(@Path("id") id : String) : Response<LegoSet>
+    @GET("lego/sets/{id}/")
+    suspend fun getSet(@Path("id") id : String) : Response<LegoSet>
 }
